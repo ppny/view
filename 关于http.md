@@ -19,3 +19,4 @@ Last-Modified If-Modified-Since
 
 4、http 的连接很简单，是无状态的；HTTPS 协议是由 SSL+HTTP 协议构建的可进行加密传输、身份认证的网络协议，比 http 协议安全。
 ### 跨域得三要素
+### localStorage/cookie/sessionStorage
