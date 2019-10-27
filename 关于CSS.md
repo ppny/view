@@ -14,8 +14,10 @@ position: sticky 粘性定位
 
 ### C3 实现绕着一个点旋转
 
-animation:circleRoate 5s infinite linear ;  
+animation:circleRoate 5s infinite linear ;
 @keyframes circleRoate{
 from{transform： rotate(0deg)}
 to{transform: rotate(360deg)}
 }
+
+### display: none和visiblity的区别（重排和重绘）【from：心有灵犀】

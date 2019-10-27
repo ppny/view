@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function once (fn) {
+      let flag = true
+      const innerFn = function() {
+        if (flag) {
+          fn(...arguments)
+          flag = false
+        } else {
+          return false
+        }
+      }
+      return innerFn
+    }
+
+    function console1 () {
+      console.log(1)
+    }
+
+    const console1Once = once(console1)
+
+    console1Once()
+    console1Once()
+    console1Once()
+    console1Once()
+    console1Once()
+
+    function use1 (a, b) {
+      console.log(a + b)
+    }
+    const testFn = once(use1)
+    testFn(1,2)
+    testFn(3,4)
+    testFn(5,6)
+    testFn(7,8)
+    testFn(9,10)
+
+  </script>
+</body>
+</html>
