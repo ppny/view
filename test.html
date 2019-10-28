@@ -8,40 +8,32 @@
 </head>
 <body>
   <script>
-    function once (fn) {
+    function once (fn) {
       let flag = true
-      const innerFn = function() {
+      const newFn = function() {
         if (flag) {
-          fn(...arguments)
           flag = false
-        } else {
-          return false
+          return fn.call(this,...arguments)
         }
       }
-      return innerFn
+      return newFn
     }
 
-    function console1 () {
-      console.log(1)
+    function fn (a) {
+      console.log(a)
+      return a + this.b
     }
 
-    const console1Once = once(console1)
-
-    console1Once()
-    console1Once()
-    console1Once()
-    console1Once()
-    console1Once()
-
-    function use1 (a, b) {
-      console.log(a + b)
+    const obj = {
+      b: 5
     }
-    const testFn = once(use1)
-    testFn(1,2)
-    testFn(3,4)
-    testFn(5,6)
-    testFn(7,8)
-    testFn(9,10)
+
+    obj.onceFn = once(fn)
+
+    const first = obj.onceFn(1) // 打印 1
+    console.log(first) // 打印 6
+    const second = obj.onceFn(1) // 不打印
+    console.log(second) // 打印 undefined
 
   </script>
 </body>
